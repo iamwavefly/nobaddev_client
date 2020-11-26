@@ -1,0 +1,12 @@
+body{
+    font-family: 'Raleway', sans-serif;
+    background-color: #F1F2F2 !important;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
