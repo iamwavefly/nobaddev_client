@@ -1,84 +1,111 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import "../components/styles/main.css"
-import JavaScript from "../components/img/javascript.png"
-import Php from "../components/img/php.png"
-import Python from "../components/img/python.png"
-import Java from "../components/img/java.png"
-import cSharp from "../components/img/csharp.png"
-import cPlus from "../components/img/c++.png"
-
+import Axios from "axios"
+import moment from "moment"
+import Job from "../components/Job"
+// import JavaScript from "../components/img/javascript.png"
+// import Php from "../components/img/php.png"
+// import Python from "../components/img/python.png"
+// import Java from "../components/img/java.png"
+// import cSharp from "../components/img/csharp.png"
+// import cPlus from "../components/img/c++.png"
 import Feed from "../components/Feed"
 
-function Main() {
-    return (
-        <div>
-            <div className="language__section">
-                <div className="box1">
-                    <div className="lang__logo">
-                        <img src={JavaScript} alt=""/>
-                    </div>
-                    <h2>JavaScript</h2>
-                    <p>23,000 questions</p>
-                </div>
-                <div className="box2">
-                    <div className="lang__logo">
-                        <img src={Php} alt=""/>
-                    </div>
-                    <h2>PHP</h2>
-                    <p>53,000 questions</p>
-                </div>
-                <div className="box3">
-                    <div className="lang__logo">
-                        <img src={Java} alt=""/>
-                    </div>
-                    <h2>Java</h2>
-                    <p>200,000 questions</p>
-                </div>
-                <div className="box4">
-                    <div className="lang__logo">
-                        <img src={cSharp} alt=""/>
-                    </div>
-                    <h2>C#</h2>
-                    <p>12,160 questions</p>
-                </div>
-                <div className="box5">
-                    <div className="lang__logo">
-                        <img src={cPlus} alt=""/>
-                    </div>
-                    <h2>C++</h2>
-                    <p>24,000 questions</p>
-                </div>
-                <div className="box6">
-                    <div className="lang__logo">
-                        <img src={Python} alt=""/>
-                    </div>
-                    <h2>Python</h2>
-                    <p>203,000 questions</p>
-                </div>
-            </div>
-            <main className="main__container">
-                <div className="sidebar__left">
-                    Left
-                </div>
-                <div className="main">
-                    <div className="main__header">
-                        <i class="large material-icons">highlight</i>
-                        <h2>Questions for you</h2>
-                    </div>
-                    
-                    <Feed language="JavaScript" date_added="2months ago." headline="Can teachers tell when a student is going through something?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                    <Feed language="Php" date_added="4months ago." headline="What is a technical design document and functional design document in a web application?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                    <Feed language="Python" date_added="2weeks ago." headline="Can teachers tell when a student is going through something?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                    <Feed language="JavaScript" date_added="an hours ago." headline="Can teachers tell when a student is going through something?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                    <Feed language="C++" date_added="20 minutes ago." headline="Can teachers tell when a student is going through something?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                    <Feed language="Goland" date_added="1months ago" headline="Can teachers tell when a student is going through something?" tagline="Your time is too precious to be pushing pixels around–it's time to shift gears and develop code faster." answer="2" />
-                </div>
-                <div className="sidebar__right">
-                    Right
-                </div>
-            </main>
-        </div>
-    )
-}
+export default class Main extends React.Component{
 
-export default Main
+    state = ({
+        posts: []
+    })
+
+    handleModal = () => {
+        const alert__form = document.querySelector(".alert__form")
+        const alert__inner = document.querySelector(".alert__inner")
+        alert__form.classList.add("show__alert")
+        alert__inner.classList.add("show__alert__inner")
+    }
+    vote = async (id) =>{
+        const res = await Axios.put(`https://nobaddev.herokuapp.com/api/post/v/${id}`)
+        console.log(res);
+        document.querySelector(".upvote_btn").remove()
+    }
+    async componentDidMount(){
+        const res = await Axios.get("https://nobaddev.herokuapp.com/api/posts")
+        this.setState({posts: res.data.message})
+    }
+
+    render(){
+        return (
+            <div>
+                {/* <div className="language__section">
+                    <div className="box1">
+                        <div className="lang__logo">
+                            <img src={JavaScript} alt=""/>
+                        </div>
+                        <h2>JavaScript</h2>
+                        <p>23,000 questions</p>
+                    </div>
+                    <div className="box2">
+                        <div className="lang__logo">
+                            <img src={Php} alt=""/>
+                        </div>
+                        <h2>PHP</h2>
+                        <p>53,000 questions</p>
+                    </div>
+                    <div className="box3">
+                        <div className="lang__logo">
+                            <img src={Java} alt=""/>
+                        </div>
+                        <h2>Java</h2>
+                        <p>200,000 questions</p>
+                    </div>
+                    <div className="box4">
+                        <div className="lang__logo">
+                            <img src={cSharp} alt=""/>
+                        </div>
+                        <h2>C#</h2>
+                        <p>12,160 questions</p>
+                    </div>
+                    <div className="box5">
+                        <div className="lang__logo">
+                            <img src={cPlus} alt=""/>
+                        </div>
+                        <h2>C++</h2>
+                        <p>24,000 questions</p>
+                    </div>
+                    <div className="box6">
+                        <div className="lang__logo">
+                            <img src={Python} alt=""/>
+                        </div>
+                        <h2>Python</h2>
+                        <p>203,000 questions</p>
+                    </div>
+                </div> */}
+                <main className="main__container">
+                    <div className="sidebar__left">
+                        <div className="ask__question-btn">
+                            <button onClick={this.handleModal}>Ask Question</button>
+                        </div>
+                        <Job />
+                        <Job />
+                        <Job />
+                        <Job />
+                        <Job />
+                        <Job />
+                    </div>
+                    <div className="main">
+                        <div className="main__header">
+                            <i class="large material-icons">highlight</i>
+                            <h2>Questions for you</h2>
+                        </div>
+                        
+                        {this.state.posts.map(res => <Feed headline={res.title.length > 65 ? res.title.substr(0, 65) + "..." : res.title} tagline={res.content.length > 160 ? res.content.substr(0, 160) + "..." : res.content} language={res.language} asked_by={res.createdBy && res.createdBy.username} date_added={moment(res.createdAt.toLocaleDateString).fromNow()} id={res._id} handleVote={this.vote} voteCount={res.score}/>)}
+
+                    </div>
+                    <div className="sidebar__right">
+                        Right
+                    </div>
+                </main>
+            </div>
+        )
+    }
+}

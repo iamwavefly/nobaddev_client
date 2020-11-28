@@ -1,13 +1,18 @@
 import React from 'react'
 import JavaScript from "../components/img/javascript.png"
 
-function Feed({ language, date_added, headline, tagline, answer }) {
+function Feed({ language, date_added, headline, tagline, answer, asked_by, handleVote, id, voteCount}) {
+
+    const voteHandleCall = () => {
+        handleVote(id)
+    } 
     return (
         <div>
             <div className="card">
                 <div className="info">
                     <span className="lang">{language}</span> &diams; &nbsp;
-                    <span className="date__posted">Asked {date_added}</span>
+                    <span className="date__posted">Asked {date_added}</span> &diams; &nbsp;
+                    <span className="date__posted">By {asked_by}</span>
                 </div>
                 <h2 className="headline">{headline}</h2>
                 <p className="tagline">{tagline}</p>
@@ -41,7 +46,10 @@ function Feed({ language, date_added, headline, tagline, answer }) {
                         <div className="share__btn">
                             <i class="large material-icons">share</i>
                         </div>
-                        <div className="upvote_btn">
+                        <div className="vote__count">
+                            {voteCount}
+                        </div>
+                        <div className="upvote_btn" onClick={voteHandleCall}>
                             <i class="large material-icons">keyboard_arrow_up</i>
                         </div>
                     </div>

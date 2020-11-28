@@ -1,0 +1,78 @@
+:root{
+    --primary: #b92b27;
+    --dark-grey: #808080;
+    --border: 1px solid rgba(0, 0, 0, 0.13);
+}
+.job__card{
+    padding: 20px 10px;
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 0, 0, 0.034);
+    margin-top: 10px;
+}
+.campany__info{
+    display: flex;
+    align-items: center;
+}
+.company__logo{
+    width: 5rem;
+    border: var(--border);
+}
+.company__logo > img{
+    width: 100%;
+}
+.company__name h3{
+    color: rgba(0, 0, 0, 0.685);
+    font-size: 15px;
+    font-weight: 800;
+}
+.job__info{
+    display: flex;
+    /* justify-content: center; */
+    line-height: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: var(--border);
+    color: var(--dark-grey);
+    width: 100%;
+}
+.job__info h2{
+    margin: 0;
+    font-size: 13px;
+    display: block;
+}
+.job__location{
+    padding-right: 5px;
+}
+.job__date{
+    padding-left: 5px;
+}
+.job__main{
+    position: relative;
+    top: 1rem;
+}
+.job__title{
+    font-size: 18px;
+    font-weight: 900;
+}
+.job__description{
+    color: rgba(0, 0, 0, 0.815);
+    width: 100%;
+}
+.apply__btn{
+    width: 100%;
+    text-align: center;
+    margin-top: 25px;
+}
+.apply__btn > a{
+    background: #005CB9;
+    padding: 6px 60px;
+    width: 100%;
+    font-weight: 700 !important;
+    border-radius: 40px;
+    color: #ffffff !important;
+    position: relative;
+    top: 15% !important;
+    font-size: 12px !important;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
+}

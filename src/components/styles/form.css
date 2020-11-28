@@ -1,0 +1,114 @@
+:root{
+    --primary: #b92b27;
+    --dark-grey: #808080;
+    --border: 1px solid rgba(0, 0, 0, 0.13);
+}
+.alert__form{
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(.11,-0.27,1,.27);
+}
+.alert__inner{
+    position: relative;
+    background: #ffffff;
+    height: auto;
+    min-height: 70vh;
+    width: auto;
+    min-width: 40rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0);
+}
+.form__header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.698);
+    border-bottom: var(--border) ;
+    background: rgba(222, 224, 225, 0.294);
+    border-radius: 10px 10px 0 0;
+    font-size: 16px;
+    font-weight: 600;
+    padding-left: 20px;
+}
+.button__group{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 20px;
+    color: rgba(0, 0, 0, 0.644);
+    border-top: var(--border) ;
+    background: rgba(222, 224, 225, 0.294);
+    border-radius: 0 0 10px 10px;
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 10px;
+}
+.button__group > button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 20px;
+    margin-right: 10px;
+    border-radius: 40px;
+    color: rgba(0, 0, 0, 0.829);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.button__group > button:nth-child(2){
+    background-color:var(--primary);
+    color: #ffffff;
+}
+/* .alert__inner > form{
+    
+} */
+.form__group{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -1rem;
+}
+.form__group input, textarea, select{
+    width: 35rem;
+    padding: 12px;
+    outline: none;
+    border: var(--border);
+    border-radius: 10px;
+}
+.form__group label{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    color: #525252;
+}
+
+/* func */
+.show__alert{
+    opacity: 1;
+    visibility: visible;
+} 
+.show__alert__inner{
+    transform: scale(1);
+} 

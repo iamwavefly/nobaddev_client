@@ -12,18 +12,26 @@ function NavBar() {
                     <img src="https://www.webdeveloper.com/assets/logo-stnmhiza.png" alt="" srcset=""/>
                     </div>
                     <ul className="left__nav">
-                        <li><Link to="/pagetwo">
-                            <i class="large material-icons">bookmark_border</i>
-                            Mentorship</Link>
-                        </li>
-                        <li><Link to="/pagetwo">
-                            <i class="large material-icons">chat_bubble_outline</i>
-                            Rooms</Link>
-                        </li>
-                        <li><Link to="/pagetwo">
-                        <i class="large material-icons">person_outline</i>
-                            Members</Link>
-                        </li>
+                        <div className="search__box">
+                            {/* <h2>Connect with top-notch developers</h2>
+                            <p>NoBadDevs have  a place for both junior and senior developer to learn and grow globally for free.</p> */}
+                            <form>
+                                <input type="text" placeholder="Search here..."/>
+                                {/* <button>Search</button> */}
+                            </form>
+                        </div>
+                        {/* <li><Link to="/pagetwo">
+                            {/* <i class="large material-icons">bookmark_border</i> */}
+                            {/* Mentorship</Link> */}
+                        {/* </li> */}
+                        {/* <li><Link to="/pagetwo"> */}
+                            {/* <i class="large material-icons">chat_bubble_outline</i> */}
+                            {/* Rooms</Link> */}
+                        {/* </li> */}
+                        {/* <li><Link to="/pagetwo"> */}
+                        {/* <i class="large material-icons">person_outline</i> */}
+                            {/* Members</Link> */}
+                        {/* </li> */}
                     </ul>
                     <ul className="right__nav">
                         <li><Link to="/pagetwo">
@@ -40,14 +48,14 @@ function NavBar() {
                         </Link></li>
                     </ul>
                 </nav>
-                <div className="search__box">
+                {/* <div className="search__box">
                     <h2>Connect with top-notch developers</h2>
                     <p>NoBadDevs have  a place for both junior and senior developer to learn and grow globally for free.</p>
                     <form>
                         <input type="text" placeholder="Search here..."/>
                         <button>Search</button>
                     </form>
-                </div>
+                </div> */}
             </header>
         </div>
     )
